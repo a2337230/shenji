@@ -6,7 +6,7 @@
     <div class="nav-right">
       <h1 class="logo-title">现场审计作业平台系统</h1>
       <ul class="nav-tabs">
-        <li v-for="item in tabs" :key="item.path" @click="goTab(item)">{{item.name}}</li>
+        <li :class="{active: $route.fullPath === item.path}" v-for="item in tabs" :key="item.path" @click="goTab(item)">{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -16,15 +16,23 @@ export default {
   name: 'Layout',
   data () {
     return {
-      tabs: []
+      tabs: [],
+      tabClick: ''
     }
   },
-  mounted () {
+  created () {
     this.tabs = this.$router.options.routes.filter(item => !item.hide)
+    this.tabClick = this.tabs.filter(item => item.path === this.$route.fullPath)
+    console.log(this.tabs, this.tabClick[0].children)
+    if (this.tabClick) {
+      this.$emit('tabClick', this.tabClick)
+    }
   },
   methods: {
     goTab (val) {
       this.$emit('tabClick', val.children)
+      this.$router.push(val.path)
+      // console.log(val)
     }
   }
 }
@@ -65,9 +73,11 @@ export default {
         font-size: 16px;
         line-height: 32px;
         color: #fff;
+        cursor: pointer;
       }
       .active {
         background-color: #2F4668;
+        border-radius: 10px 10px 0 0;
       }
     }
   }

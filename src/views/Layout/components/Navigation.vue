@@ -4,10 +4,15 @@
       <!-- <strong class="title">{{$route.name}}</strong> -->
       <el-breadcrumb separator-class="el-icon-arrow-right" class="breadcrumb-inner">
         <transition-group name="breadcrumb" mode="out-in">
-          <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
-            {{ item.name }}
-          </el-breadcrumb-item>
+            <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+              {{ item.name }}
+            </el-breadcrumb-item>
         </transition-group>
+        <!-- <transition-group name="breadcrumb" mode="out-in">
+            <el-breadcrumb-item>
+              {{ $route.name}}
+            </el-breadcrumb-item>
+        </transition-group> -->
       </el-breadcrumb>
     </el-col>
   </div>
@@ -20,6 +25,9 @@ export default {
       type: String,
       default: ''
     }
+  },
+  mounted () {
+    console.log(this.$route.matched)
   }
 }
 </script>
