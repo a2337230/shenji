@@ -10,7 +10,7 @@
         <section class="content-view">
           <el-scrollbar style="height: 100%">
             <transition name="fade-transform" mode="out-in">
-              <router-view class="views"></router-view>
+              <router-view class="views" :key="key"></router-view>
             </transition>
           </el-scrollbar>
         </section>

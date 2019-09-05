@@ -1,6 +1,22 @@
 <template>
   <div class="side-bar">
-    侧边栏
+    <el-menu
+        :default-active="$route.path"
+        class="el-menu-vertical-demo"
+        background-color="#455F85"
+        text-color="#989898"
+        active-text-color="#333333"
+        unique-opened
+        v-if="data"
+      >
+        <template v-for="item in data">
+          <el-menu-item :index="item.path" :key="item.path">
+            <router-link :to="item.path" tag="div">
+              {{item.name}}
+            </router-link>
+          </el-menu-item>
+        </template>
+      </el-menu>
   </div>
 </template>
 <script>
@@ -8,8 +24,8 @@ export default {
   name: 'Layout',
   props: {
     data: {
-      type: Object,
-      default: () => { return {} }
+      type: Array,
+      default: () => { return [] }
     }
   },
   data () {
@@ -28,5 +44,8 @@ export default {
   width: 200px;
   height: calc(~"100vh - 80px");
   background-color: #455F85;
+}
+.router-link-active {
+  color: #fff;
 }
 </style>

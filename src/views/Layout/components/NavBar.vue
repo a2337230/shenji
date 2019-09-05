@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     goTab (val) {
-      this.$emit('tabClick', val)
+      this.$emit('tabClick', val.children)
     }
   }
 }
