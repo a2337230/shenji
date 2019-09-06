@@ -7,7 +7,7 @@ const xiangmu = {
   component: Layout,
   children: [
     {
-      path: '/xiangmu',
+      path: 'xiangmu1',
       name: '项目1',
       component: () => import('@/views/xiangmu/components/xiangmu1')
     }

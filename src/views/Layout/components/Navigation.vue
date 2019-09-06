@@ -1,10 +1,10 @@
 <template>
-  <div class="navigation" :class="{navBg: url === '/Home'}">
+  <div class="navigation">
     <el-col :span="24" class="breadcrumb-container">
       <!-- <strong class="title">{{$route.name}}</strong> -->
       <el-breadcrumb separator-class="el-icon-arrow-right" class="breadcrumb-inner">
         <transition-group name="breadcrumb" mode="out-in">
-            <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+            <el-breadcrumb-item v-for="item in key" :key="item.path">
               {{ item.name }}
             </el-breadcrumb-item>
         </transition-group>
@@ -22,8 +22,8 @@ export default {
   name: 'Navigation',
   props: {
     url: {
-      type: String,
-      default: ''
+      type: Array,
+      default: () => { return []}
     }
   },
   mounted () {
@@ -82,8 +82,5 @@ export default {
   display: flex;
   align-items: center;
   transition: .5s;
-}
-.navBg {
-  background-color:#f0f2f5;
 }
 </style>

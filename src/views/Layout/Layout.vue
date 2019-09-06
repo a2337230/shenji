@@ -3,7 +3,7 @@
     <nav-bar @tabClick="tabClick"></nav-bar>
     <div class="main-container">
       <div class="left">
-        <side-bar :data="sideBar"></side-bar>
+        <side-bar :data="sideBar" @getNavigation="getNavigation"></side-bar>
       </div>
       <div class="right">
         <navigation class="navigation" :url="key"></navigation>
@@ -26,7 +26,8 @@ export default {
   name: 'Layout',
   data () {
     return {
-      sideBar: null
+      sideBar: null,
+      key: null
     }
   },
   components: {
@@ -34,14 +35,17 @@ export default {
     NavBar,
     Navigation
   },
-  computed: {
-    key () {
-      return this.$route.fullPath
-    }
-  },
+  // computed: {
+  //   key () {
+  //     return this.$route.fullPath
+  //   }
+  // },
   methods: {
     tabClick (val) {
       this.sideBar = val
+    },
+    getNavigation (val) {
+      this.key = val
     }
   }
 }

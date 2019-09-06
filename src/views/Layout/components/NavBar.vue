@@ -4,8 +4,9 @@
       <img src="./../../../common/images/logo.png" alt="">
     </div>
     <div class="nav-right">
-      <h1 class="logo-title">现场审计作业平台系统</h1>
+      <!-- <h1 class="logo-title">现场审计作业平台系统</h1> -->
       <ul class="nav-tabs">
+        <router-link to="/Home" tag="li">首页</router-link>
         <li :class="{active: $route.fullPath === item.path}" v-for="item in tabs" :key="item.path" @click="goTab(item)">{{item.name}}</li>
       </ul>
     </div>
@@ -31,8 +32,9 @@ export default {
   methods: {
     goTab (val) {
       this.$emit('tabClick', val.children)
+
       this.$router.push(val.path)
-      // console.log(val)
+      
     }
   }
 }

@@ -11,7 +11,7 @@
       >
         <template v-for="item in data">
           <el-menu-item :index="item.path" :key="item.path">
-            <router-link :to="item.path" tag="div">
+            <router-link :to="{name: item.name}" tag="div" @click.native="toMenu">
               {{item.name}}
             </router-link>
           </el-menu-item>
@@ -30,6 +30,12 @@ export default {
   },
   data () {
     return {
+    }
+  },
+  methods: {
+    toMenu () {
+      this.$emit('getNavigation', this.$route.matched)
+      console.log(this.$route.matched)
     }
   },
   watch: {

@@ -7,7 +7,7 @@ const shuju = {
   component: Layout,
   children: [
     {
-      path: '/shuju1',
+      path: 'shuju1',
       name: '数据采集1',
       component: () => import('@/views/xiangmu/components/xiangmu1')
     }
